@@ -21,3 +21,6 @@ logs
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# Ignore tests
+src/tests/

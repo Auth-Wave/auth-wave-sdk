@@ -1,4 +1,6 @@
 import { AuthService } from "./auth/auth.service";
+
+// --------------------------- ONLY FOR TESTING (Remove these later in production)
 import { AuthServiceTest } from "./tests/auth-service.test";
 
 const authService = new AuthService(
@@ -8,12 +10,10 @@ const authService = new AuthService(
 const authServiceTest = new AuthServiceTest(authService);
 
 (async () => {
-  const response = await authServiceTest.testCreateAccount({
-    username: "testuser",
-    password: "Test123456@",
-    email: "test@test.com",
-  });
+  const response = await authServiceTest.testLogout();
   console.log(response);
 })();
+
+// --------------------------- ONLY FOR TESTING (Remove these later in production)
 
 export { AuthService };
