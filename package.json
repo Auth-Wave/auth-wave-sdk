@@ -1,0 +1,49 @@
+{
+  "name": "authwave-sdk",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "jest"
+  },
+  "keywords": [
+    "authentication",
+    "auth",
+    "sdk",
+    "web-auth",
+    "login",
+    "authorization",
+    "identity",
+    "security",
+    "oauth2",
+    "jwt",
+    "single-sign-on",
+    "user-management"
+  ],
+  "author": "Abhijeet Gautam",
+  "license": "MIT",
+  "description": "A lightweight SDK providing authentication services integration for web applications",
+  "files": [
+    "dist"
+  ],
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Auth-Wave/authwave-sdk"
+  },
+  "homepage": "https://authwave.io",
+  "bugs": {
+    "url": "https://github.com/abhijeetgautam/authwave-sdk/issues"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "axios": "^1.7.7"
+  }
+}
