@@ -1,6 +1,9 @@
 import axios from "axios";
 import { AUTHWAVE_API_BASE_URL } from "../constant";
 
+const cookies =
+  "user-access-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM3MDEwN2FkMDI4M2M0ZmZjNGY4ZGEiLCJwcm9qZWN0SWQiOiI2NzMzMWExOGMzMTBlMzVkYjc0NmZhYzciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNzMxNzM2Nzk3LCJleHAiOjE3MzE4MjMxOTd9.7UP8OTkvwWaJIcTS87ktBDmDYGR7fu-t7N1YxEGD49U; user-refresh-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM3MDEwN2FkMDI4M2M0ZmZjNGY4ZGEiLCJwcm9qZWN0SWQiOiI2NzMzMWExOGMzMTBlMzVkYjc0NmZhYzciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNzMxNzM2Nzk3LCJleHAiOjE3MzQzMjg3OTd9.gdUpoB72WEvUHsuAyehLHfyz-xcvZZgzcloUte85esw";
+
 export class AuthService {
   private readonly projectId: string;
   private readonly projectKey: string;
@@ -39,12 +42,15 @@ export class AuthService {
     }
   };
 
+  // TESTING REMAINING
   public deleteAccount = async () => {
     try {
       const response = await axios.delete(`${this.baseUrl}/user/delete`, {
         headers: {
           "project-id": this.projectId,
           "project-key": this.projectKey,
+          // Remove these later in production (ONLY FOR TESTING)
+          Cookie: cookies,
         },
         withCredentials: true,
       });
@@ -61,8 +67,7 @@ export class AuthService {
           "project-id": this.projectId,
           "project-key": this.projectKey,
           // Remove these later in production (ONLY FOR TESTING)
-          Cookie:
-            "user-access-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM3MDEwN2FkMDI4M2M0ZmZjNGY4ZGEiLCJwcm9qZWN0SWQiOiI2NzMzMWExOGMzMTBlMzVkYjc0NmZhYzciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNzMxNjY1OTgzLCJleHAiOjE3MzE3NTIzODN9.DmlwA1bjx90TSf79HKRAOdkvCz_NlO6cKIDwXsREeEw; user-refresh-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM3MDEwN2FkMDI4M2M0ZmZjNGY4ZGEiLCJwcm9qZWN0SWQiOiI2NzMzMWExOGMzMTBlMzVkYjc0NmZhYzciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNzMxNjY1OTgzLCJleHAiOjE3MzQyNTc5ODN9.QouIzbF1_h51E4GtLRWW4ubTQLow8c6oasIr2nVV42Y",
+          Cookie: cookies,
         },
         withCredentials: true,
       });
@@ -99,23 +104,35 @@ export class AuthService {
     }
   };
 
-  public otpLogin = async () => {};
+  public otpLogin = {
+    init: async () => {
+      // Functionality to be implemented later
+    },
+    complete: async () => {
+      // Functionality to be implemented later
+    },
+  };
 
-  public magicURLLogin = async () => {};
+  public magicURLLogin = {
+    init: async () => {
+      // Functionality to be implemented later
+    },
+    complete: async () => {
+      // Functionality to be implemented later
+    },
+  };
 
-  public refreshAccessToken = async () => {};
-
-  public logout = async () => {
+  public refreshAccessToken = async () => {
     try {
-      const response = await axios.delete(
-        `${this.baseUrl}/user/auth/session/delete`,
+      const response = await axios.post(
+        `${this.baseUrl}/user/access-token/refresh`,
+        {},
         {
           headers: {
             "project-id": this.projectId,
             "project-key": this.projectKey,
-            // Remove these later in production (ONLY FOR TESTING)
-            Cookie:
-              "user-access-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM3MDEwN2FkMDI4M2M0ZmZjNGY4ZGEiLCJwcm9qZWN0SWQiOiI2NzMzMWExOGMzMTBlMzVkYjc0NmZhYzciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNzMxNjY1OTgzLCJleHAiOjE3MzE3NTIzODN9.DmlwA1bjx90TSf79HKRAOdkvCz_NlO6cKIDwXsREeEw; user-refresh-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM3MDEwN2FkMDI4M2M0ZmZjNGY4ZGEiLCJwcm9qZWN0SWQiOiI2NzMzMWExOGMzMTBlMzVkYjc0NmZhYzciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNzMxNjY1OTgzLCJleHAiOjE3MzQyNTc5ODN9.QouIzbF1_h51E4GtLRWW4ubTQLow8c6oasIr2nVV42Y",
+            // Remove this later in production (ONLY FOR TESTING)
+            Cookie: cookies,
           },
           withCredentials: true,
         }
@@ -126,13 +143,166 @@ export class AuthService {
     }
   };
 
-  public deleteSessionById = async () => {};
+  public logout = async () => {
+    try {
+      const response = await axios.delete(
+        `${this.baseUrl}/user/auth/session/delete`,
+        {
+          headers: {
+            "project-id": this.projectId,
+            "project-key": this.projectKey,
+            // Remove these later in production (ONLY FOR TESTING)
+            Cookie: cookies,
+          },
+          withCredentials: true,
+        }
+      );
+      return response.data;
+    } catch (error: any) {
+      throw error;
+    }
+  };
 
-  public getAllSessions = async () => {};
+  public deleteSessionById = async (sessionId: string) => {
+    try {
+      const response = await axios.delete(
+        `${this.baseUrl}/user/auth/session/delete/${sessionId}`,
+        {
+          headers: {
+            "project-id": this.projectId,
+            "project-key": this.projectKey,
+            // Remove this later in production (ONLY FOR TESTING)
+            Cookie: cookies,
+          },
+          withCredentials: true,
+        }
+      );
+      return response.data;
+    } catch (error: any) {
+      throw error;
+    }
+  };
 
-  public deleteAllSessions = async () => {};
+  public getAllSessions = async () => {
+    try {
+      const response = await axios.get(`${this.baseUrl}/user/sessions`, {
+        headers: {
+          "project-id": this.projectId,
+          "project-key": this.projectKey,
+          // Remove this later in production (ONLY FOR TESTING)
+          Cookie: cookies,
+        },
+        withCredentials: true,
+      });
+      return response.data;
+    } catch (error: any) {
+      throw error;
+    }
+  };
 
-  public verifyAccount = async () => {};
+  public deleteAllSessions = async () => {
+    try {
+      const response = await axios.delete(
+        `${this.baseUrl}/user/sessions/delete`,
+        {
+          headers: {
+            "project-id": this.projectId,
+            "project-key": this.projectKey,
+            // Remove this later in production (ONLY FOR TESTING)
+            Cookie: cookies,
+          },
+          withCredentials: true,
+        }
+      );
+      return response.data;
+    } catch (error: any) {
+      throw error;
+    }
+  };
 
-  public resetPassword = async () => {};
+  public accountVerification = {
+    init: async () => {
+      try {
+        const response = await axios.post(
+          `${this.baseUrl}/user/verify?initiate=true`,
+          {},
+          {
+            headers: {
+              "project-id": this.projectId,
+              "project-key": this.projectKey,
+              // Remove this later in production (ONLY FOR TESTING)
+              Cookie: cookies,
+            },
+            withCredentials: true,
+          }
+        );
+        return response.data;
+      } catch (error: any) {
+        throw error;
+      }
+    },
+    complete: async (token: string) => {
+      try {
+        const response = await axios.post(
+          `${this.baseUrl}/user/verify?verificationToken=${token}`,
+          {},
+          {
+            headers: {
+              "project-id": this.projectId,
+              "project-key": this.projectKey,
+              // Remove this later in production (ONLY FOR TESTING)
+              Cookie: cookies,
+            },
+            withCredentials: true,
+          }
+        );
+        return response.data;
+      } catch (error: any) {
+        throw error;
+      }
+    },
+  };
+
+  public resetPassword = {
+    init: async () => {
+      try {
+        const response = await axios.post(
+          `${this.baseUrl}/user/reset-password?initiate=true`,
+          {},
+          {
+            headers: {
+              "project-id": this.projectId,
+              "project-key": this.projectKey,
+              // Remove this later in production (ONLY FOR TESTING)
+              Cookie: cookies,
+            },
+            withCredentials: true,
+          }
+        );
+        return response.data;
+      } catch (error: any) {
+        throw error;
+      }
+    },
+    complete: async (token: string, newPassword: string) => {
+      try {
+        const response = await axios.post(
+          `${this.baseUrl}/user/reset-password?resetPasswordToken=${token}`,
+          { newPassword },
+          {
+            headers: {
+              "project-id": this.projectId,
+              "project-key": this.projectKey,
+              // Remove this later in production (ONLY FOR TESTING)
+              Cookie: cookies,
+            },
+            withCredentials: true,
+          }
+        );
+        return response.data;
+      } catch (error: any) {
+        throw error;
+      }
+    },
+  };
 }

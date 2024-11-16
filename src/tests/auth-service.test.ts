@@ -50,4 +50,80 @@ export class AuthServiceTest {
       return error.response.data;
     }
   };
+
+  public testGetAllSessions = async () => {
+    try {
+      const response = await this.authService.getAllSessions();
+      return response;
+    } catch (error: any) {
+      return error.response.data;
+    }
+  };
+
+  public testDeleteSessionById = async (sessionId: string) => {
+    try {
+      const response = await this.authService.deleteSessionById(sessionId);
+      return response;
+    } catch (error: any) {
+      return error.response.data;
+    }
+  };
+
+  public testDeleteAllSessions = async () => {
+    try {
+      const response = await this.authService.deleteAllSessions();
+      return response;
+    } catch (error: any) {
+      return error.response.data;
+    }
+  };
+
+  public testAccountVerification = {
+    init: async () => {
+      try {
+        const response = await this.authService.accountVerification.init();
+        return response;
+      } catch (error: any) {
+        return error.response.data;
+      }
+    },
+    complete: async (token: string) => {
+      try {
+        const response = await this.authService.accountVerification.complete(
+          token
+        );
+        return response;
+      } catch (error: any) {
+        return error.response.data;
+      }
+    },
+  };
+
+  public testResetPassword = {
+    init: async () => {
+      try {
+        const response = await this.authService.resetPassword.init();
+        return response;
+      } catch (error: any) {
+        return error.response.data;
+      }
+    },
+    complete: async (token: string, newPassword: string) => {
+      try {
+        const response = await this.authService.resetPassword.complete(token, newPassword);
+        return response;
+      } catch (error: any) {
+        return error.response.data;
+      }
+    },
+  };
+
+  public testRefreshAccessToken = async () => {
+    try {
+      const response = await this.authService.refreshAccessToken();
+      return response;
+    } catch (error: any) {
+      return error.response.data;
+    }
+  };
 }

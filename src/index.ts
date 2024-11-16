@@ -10,7 +10,12 @@ const authService = new AuthService(
 const authServiceTest = new AuthServiceTest(authService);
 
 (async () => {
-  const response = await authServiceTest.testLogout();
+  // const response = await authServiceTest.testPasswordLogin({
+  //   username: "test",
+  //   email: "test@test.com",
+  //   password: "Test123456@",
+  // });
+  const response = await authServiceTest.testRefreshAccessToken();
   console.log(response);
 })();
 
