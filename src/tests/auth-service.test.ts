@@ -20,6 +20,15 @@ export class AuthServiceTest {
     }
   };
 
+  public testDeleteAccount = async () => {
+    try {
+      const response = await this.authService.deleteAccount();
+      return response;
+    } catch (error: any) {
+      return error.response.data;
+    }
+  };
+
   public testPasswordLogin = async (data: any) => {
     try {
       const response = await this.authService.passwordLogin(
@@ -110,7 +119,10 @@ export class AuthServiceTest {
     },
     complete: async (token: string, newPassword: string) => {
       try {
-        const response = await this.authService.resetPassword.complete(token, newPassword);
+        const response = await this.authService.resetPassword.complete(
+          token,
+          newPassword
+        );
         return response;
       } catch (error: any) {
         return error.response.data;
@@ -125,5 +137,46 @@ export class AuthServiceTest {
     } catch (error: any) {
       return error.response.data;
     }
+  };
+
+  public testOtpLogin = {
+    init: async (email: string) => {
+      try {
+        const response = await this.authService.otpLogin.init(email);
+        return response;
+      } catch (error: any) {
+        return error.response.data;
+      }
+    },
+    complete: async (email: string, token: string) => {
+      try {
+        const response = await this.authService.otpLogin.complete(email, token);
+        return response;
+      } catch (error: any) {
+        return error.response.data;
+      }
+    },
+  };
+
+  public testMagicURLLogin = {
+    init: async (email: string) => {
+      try {
+        const response = await this.authService.magicURLLogin.init(email);
+        return response;
+      } catch (error: any) {
+        return error.response.data;
+      }
+    },
+    complete: async (email: string, token: string) => {
+      try {
+        const response = await this.authService.magicURLLogin.complete(
+          email,
+          token
+        );
+        return response;
+      } catch (error: any) {
+        return error.response.data;
+      }
+    },
   };
 }

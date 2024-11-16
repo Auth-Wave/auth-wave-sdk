@@ -2,7 +2,7 @@ import axios from "axios";
 import { AUTHWAVE_API_BASE_URL } from "../constant";
 
 const cookies =
-  "user-access-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM3MDEwN2FkMDI4M2M0ZmZjNGY4ZGEiLCJwcm9qZWN0SWQiOiI2NzMzMWExOGMzMTBlMzVkYjc0NmZhYzciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNzMxNzM2Nzk3LCJleHAiOjE3MzE4MjMxOTd9.7UP8OTkvwWaJIcTS87ktBDmDYGR7fu-t7N1YxEGD49U; user-refresh-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM3MDEwN2FkMDI4M2M0ZmZjNGY4ZGEiLCJwcm9qZWN0SWQiOiI2NzMzMWExOGMzMTBlMzVkYjc0NmZhYzciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNzMxNzM2Nzk3LCJleHAiOjE3MzQzMjg3OTd9.gdUpoB72WEvUHsuAyehLHfyz-xcvZZgzcloUte85esw";
+  "user-access-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM3MDEwN2FkMDI4M2M0ZmZjNGY4ZGEiLCJwcm9qZWN0SWQiOiI2NzMzMWExOGMzMTBlMzVkYjc0NmZhYzciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNzMxNzc1MzYwLCJleHAiOjE3MzE4NjE3NjB9.mTPbcKHAagZurqIhplz3IDum71IDqjxd8dII3vkOBYM; user-refresh-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM3MDEwN2FkMDI4M2M0ZmZjNGY4ZGEiLCJwcm9qZWN0SWQiOiI2NzMzMWExOGMzMTBlMzVkYjc0NmZhYzciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNzMxNzc1MzYwLCJleHAiOjE3MzQzNjczNjB9.PHvZ7qccrxWKdgweBDrhQ3wOjRI7vCCyIlyyjirt0W8";
 
 export class AuthService {
   private readonly projectId: string;
@@ -42,7 +42,6 @@ export class AuthService {
     }
   };
 
-  // TESTING REMAINING
   public deleteAccount = async () => {
     try {
       const response = await axios.delete(`${this.baseUrl}/user/delete`, {
@@ -105,20 +104,80 @@ export class AuthService {
   };
 
   public otpLogin = {
-    init: async () => {
-      // Functionality to be implemented later
+    init: async (email: string) => {
+      try {
+        const response = await axios.post(
+          `${this.baseUrl}/user/auth/otp-on-email?initiate=true`,
+          { email },
+          {
+            headers: {
+              "project-id": this.projectId,
+              "project-key": this.projectKey,
+            },
+            withCredentials: true,
+          }
+        );
+        return response.data;
+      } catch (error: any) {
+        throw error;
+      }
     },
-    complete: async () => {
-      // Functionality to be implemented later
+    complete: async (email: string, token: string) => {
+      try {
+        const response = await axios.post(
+          `${this.baseUrl}/user/auth/otp-on-email?otpToken=${token}`,
+          { email },
+          {
+            headers: {
+              "project-id": this.projectId,
+              "project-key": this.projectKey,
+            },
+            withCredentials: true,
+          }
+        );
+        return response.data;
+      } catch (error: any) {
+        throw error;
+      }
     },
   };
 
   public magicURLLogin = {
-    init: async () => {
-      // Functionality to be implemented later
+    init: async (email: string) => {
+      try {
+        const response = await axios.post(
+          `${this.baseUrl}/user/auth/magic-url?initiate=true`,
+          { email },
+          {
+            headers: {
+              "project-id": this.projectId,
+              "project-key": this.projectKey,
+            },
+            withCredentials: true,
+          }
+        );
+        return response.data;
+      } catch (error: any) {
+        throw error;
+      }
     },
-    complete: async () => {
-      // Functionality to be implemented later
+    complete: async (email: string, token: string) => {
+      try {
+        const response = await axios.post(
+          `${this.baseUrl}/user/auth/magic-url?magicURLToken=${token}`,
+          { email },
+          {
+            headers: {
+              "project-id": this.projectId,
+              "project-key": this.projectKey,
+            },
+            withCredentials: true,
+          }
+        );
+        return response.data;
+      } catch (error: any) {
+        throw error;
+      }
     },
   };
 
