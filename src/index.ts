@@ -16,10 +16,13 @@ const authServiceTest = new AuthServiceTest(authService);
   //   password: "NewTest123456@",
   // });
   // const response = await authServiceTest.testMagicURLLogin.init("test@test.com");
-  const response = await authServiceTest.testMagicURLLogin.complete(
-    "test@test.com",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9qZWN0SWQiOiI2NzMzMWExOGMzMTBlMzVkYjc0NmZhYzciLCJ1c2VySWQiOiI2NzM4Y2JjY2RmOWUxNTMyNDY3YWM4NzAiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpYXQiOjE3MzE3NzU0MzYsImV4cCI6MTczMTc3NjMzNn0.5BybJj294hy21aYcLZRU2R6glbYHNVNI4f-9IUstqqE"
-  );
+  const response = await authServiceTest.testGetUserLogsByEventCode({
+    page: 1,
+    itemLimit: 10,
+    startDate: new Date("2024-11-15"),
+    // endDate: new Date("2024-11-17"),
+    eventCode: "MAGIC_URL_AUTHENTICATION",
+  });
   console.log(response);
 })();
 

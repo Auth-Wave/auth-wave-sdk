@@ -179,4 +179,55 @@ export class AuthServiceTest {
       }
     },
   };
+
+  public testGetAllUserLogs = async ({
+    page,
+    itemLimit,
+    startDate,
+    endDate,
+  }: {
+    page?: number;
+    itemLimit?: number;
+    startDate?: Date;
+    endDate?: Date;
+  }) => {
+    try {
+      const response = await this.authService.getAllUserLogs({
+        page,
+        itemLimit,
+        startDate,
+        endDate,
+      });
+      return response;
+    } catch (error: any) {
+      return error.response.data;
+    }
+  };
+
+  public testGetUserLogsByEventCode = async ({
+    page,
+    itemLimit,
+    startDate,
+    endDate,
+    eventCode,
+  }: {
+    page?: number;
+    itemLimit?: number;
+    startDate?: Date;
+    endDate?: Date;
+    eventCode: string;
+  }) => {
+    try {
+      const response = await this.authService.getUserLogsByEventCode({
+        page,
+        itemLimit,
+        startDate,
+        endDate,
+        eventCode,
+      });
+      return response;
+    } catch (error: any) {
+      return error.response.data;
+    }
+  };
 }

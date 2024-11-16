@@ -1,8 +1,8 @@
 import axios from "axios";
 import { AUTHWAVE_API_BASE_URL } from "../constant";
 
-const cookies =
-  "user-access-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM3MDEwN2FkMDI4M2M0ZmZjNGY4ZGEiLCJwcm9qZWN0SWQiOiI2NzMzMWExOGMzMTBlMzVkYjc0NmZhYzciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNzMxNzc1MzYwLCJleHAiOjE3MzE4NjE3NjB9.mTPbcKHAagZurqIhplz3IDum71IDqjxd8dII3vkOBYM; user-refresh-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM3MDEwN2FkMDI4M2M0ZmZjNGY4ZGEiLCJwcm9qZWN0SWQiOiI2NzMzMWExOGMzMTBlMzVkYjc0NmZhYzciLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNzMxNzc1MzYwLCJleHAiOjE3MzQzNjczNjB9.PHvZ7qccrxWKdgweBDrhQ3wOjRI7vCCyIlyyjirt0W8";
+export const cookies =
+  "user-access-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9qZWN0SWQiOiI2NzMzMWExOGMzMTBlMzVkYjc0NmZhYzciLCJ1c2VySWQiOiI2NzM4Y2JjY2RmOWUxNTMyNDY3YWM4NzAiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpYXQiOjE3MzE3NzU1MzEsImV4cCI6MTczMTg2MTkzMX0.FPkZtLtGqxdMGwOVaocJlYooWCBzdIhF9J0Mx9SgSPI; user-refresh-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9qZWN0SWQiOiI2NzMzMWExOGMzMTBlMzVkYjc0NmZhYzciLCJ1c2VySWQiOiI2NzM4Y2JjY2RmOWUxNTMyNDY3YWM4NzAiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpYXQiOjE3MzE3NzU1MzEsImV4cCI6MTczMTg2MTkzMX0.FPkZtLtGqxdMGwOVaocJlYooWCBzdIhF9J0Mx9SgSPI";
 
 export class AuthService {
   private readonly projectId: string;
@@ -363,5 +363,69 @@ export class AuthService {
         throw error;
       }
     },
+  };
+
+  /* -----------------------------SECURITY LOG METHODS---------------------------------------- */
+
+  public getAllUserLogs = async ({
+    page,
+    itemLimit,
+    startDate,
+    endDate,
+  }: {
+    page?: number;
+    itemLimit?: number;
+    startDate?: Date;
+    endDate?: Date;
+  }) => {
+    try {
+      const response = await axios.get(
+        `${this.baseUrl}/user/logs/all?page=${page}&itemLimit=${itemLimit}&startDate=${startDate}&endDate=${endDate}`,
+        {
+          headers: {
+            "project-id": this.projectId,
+            "project-key": this.projectKey,
+            // Remove these later in production (ONLY FOR TESTING)
+            Cookie: cookies,
+          },
+          withCredentials: true,
+        }
+      );
+      return response.data;
+    } catch (error: any) {
+      throw error;
+    }
+  };
+
+  public getUserLogsByEventCode = async ({
+    page,
+    itemLimit,
+    startDate,
+    endDate,
+    eventCode,
+  }: {
+    page?: number;
+    itemLimit?: number;
+    startDate?: Date;
+    endDate?: Date;
+    eventCode: string;
+  }) => {
+    try {
+      const response = await axios.get(
+        `${this.baseUrl}/user/logs?page=${page}&itemLimit=${itemLimit}&startDate=${startDate}&endDate=${endDate}&eventCode=${eventCode}`,
+        {
+          headers: {
+            "project-id": this.projectId,
+            "project-key": this.projectKey,
+            // Remove these later in production (ONLY FOR TESTING)
+            Cookie: cookies,
+          },
+          withCredentials: true,
+        }
+      );
+      return response.data;
+    } catch (error: any) {
+      throw error;
+    }
   };
 }
