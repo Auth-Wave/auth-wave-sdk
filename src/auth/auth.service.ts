@@ -143,11 +143,11 @@ export class AuthService {
   };
 
   public magicURLLogin = {
-    init: async (email: string) => {
+    init: async (email: string, baseLink: string) => {
       try {
         const response = await axios.post(
           `${this.baseUrl}/user/auth/magic-url?initiate=true`,
-          { email },
+          { email, baseLink },
           {
             headers: {
               "project-id": this.projectId,
@@ -280,11 +280,11 @@ export class AuthService {
   };
 
   public accountVerification = {
-    init: async () => {
+    init: async (baseLink: string) => {
       try {
         const response = await axios.post(
           `${this.baseUrl}/user/verify?initiate=true`,
-          {},
+          { baseLink },
           {
             headers: {
               "project-id": this.projectId,
@@ -323,11 +323,11 @@ export class AuthService {
   };
 
   public resetPassword = {
-    init: async () => {
+    init: async (baseLink: string) => {
       try {
         const response = await axios.post(
           `${this.baseUrl}/user/reset-password?initiate=true`,
-          {},
+          { baseLink },
           {
             headers: {
               "project-id": this.projectId,
