@@ -6,43 +6,23 @@ Authwave SDK is a lightweight and flexible authentication library designed to si
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [SDK SOURCE CODE](#sdk-source-code)
 - [BACKEND SOURCE CODE](#backend-source-code)
-- [License](#license)
 
 ## Installation
 
-## Usage
+Install the SDK using NPM:
 
-## Contributing
+```bash
+npm install authwave-sdk
+```
+
+## Usage
 
 ## BACKEND SOURCE CODE
 
-The source code for the backend can be found [here](https://github.com/abhijeetgautam/authwave-backend).
+The source code for the backend can be found [here](https://github.com/Auth-Wave/auth-wave-backend).
 
 ## SDK SOURCE CODE
 
-The source code for the SDK can be found [here](https://github.com/abhijeetgautam/authwave-sdk).
-
-## License
-
-MIT License
-
-Copyright (c) 2024 Abhijeet Gautam
-
-This software is provided "as is" and free to use. The author disclaims all warranties and liabilities.
-You are free to use, modify, copy, distribute this software for any purpose, commercial or non-commercial.
-
-By using this software, you agree that:
-
-1. The author takes no responsibility for any damages or issues arising from the use of this software
-
-2. You will not hold the author legally liable for anything related to this software
-3. You understand this is provided without any warranty or guarantee of any kind
-4. You use this software at your own risk
-
-The above copyright notice and this disclaimer must be included in all copies or substantial portions of the Software.
-
-For full details of the MIT License under which this software is released, please refer to:
-[MIT License](https://opensource.org/licenses/MIT)
+The source code for the SDK can be found [here](https://github.com/Auth-Wave/auth-wave-sdk).

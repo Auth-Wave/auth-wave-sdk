@@ -11,11 +11,7 @@
   "keywords": [
     "authentication",
     "auth",
-    "sdk",
-    "web-auth",
     "login",
-    "authorization",
-    "identity",
     "security",
     "oauth2",
     "jwt",
@@ -26,16 +22,16 @@
   "license": "MIT",
   "description": "A lightweight SDK providing authentication services integration for web applications",
   "files": [
-    "dist"
+    "dist/"
   ],
   "private": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/Auth-Wave/authwave-sdk"
+    "url": "git+https://github.com/Auth-Wave/authwave-sdk.git"
   },
-  "homepage": "https://authwave.io",
+  "homepage": "https://github.com/Auth-Wave/authwave-sdk.git#readme",
   "bugs": {
-    "url": "https://github.com/abhijeetgautam/authwave-sdk/issues"
+    "url": "https://github.com/Auth-Wave/authwave-sdk/issues"
   },
   "devDependencies": {
     "@types/axios": "^0.9.36",
