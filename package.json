@@ -1,6 +1,6 @@
 {
   "name": "authwave-sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -27,9 +27,9 @@
   "private": false,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Auth-Wave/authwave-sdk.git"
+    "url": "https://github.com/Auth-Wave/authwave-sdk"
   },
-  "homepage": "https://github.com/Auth-Wave/authwave-sdk.git#readme",
+  "homepage": "https://github.com/Auth-Wave/authwave-sdk#readme",
   "bugs": {
     "url": "https://github.com/Auth-Wave/authwave-sdk/issues"
   },
