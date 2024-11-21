@@ -1,9 +1,6 @@
 import axios from "axios";
 import { AUTHWAVE_API_BASE_URL } from "../constant";
 
-export const cookies =
-  "user-access-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9qZWN0SWQiOiI2NzMzMWExOGMzMTBlMzVkYjc0NmZhYzciLCJ1c2VySWQiOiI2NzM4Y2JjY2RmOWUxNTMyNDY3YWM4NzAiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpYXQiOjE3MzE3NzU1MzEsImV4cCI6MTczMTg2MTkzMX0.FPkZtLtGqxdMGwOVaocJlYooWCBzdIhF9J0Mx9SgSPI; user-refresh-token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9qZWN0SWQiOiI2NzMzMWExOGMzMTBlMzVkYjc0NmZhYzciLCJ1c2VySWQiOiI2NzM4Y2JjY2RmOWUxNTMyNDY3YWM4NzAiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJpYXQiOjE3MzE3NzU1MzEsImV4cCI6MTczMTg2MTkzMX0.FPkZtLtGqxdMGwOVaocJlYooWCBzdIhF9J0Mx9SgSPI";
-
 export class AuthService {
   private readonly projectId: string;
   private readonly projectKey: string;
@@ -48,8 +45,6 @@ export class AuthService {
         headers: {
           "project-id": this.projectId,
           "project-key": this.projectKey,
-          // Remove these later in production (ONLY FOR TESTING)
-          Cookie: cookies,
         },
         withCredentials: true,
       });
@@ -65,8 +60,6 @@ export class AuthService {
         headers: {
           "project-id": this.projectId,
           "project-key": this.projectKey,
-          // Remove these later in production (ONLY FOR TESTING)
-          Cookie: cookies,
         },
         withCredentials: true,
       });
@@ -190,8 +183,6 @@ export class AuthService {
           headers: {
             "project-id": this.projectId,
             "project-key": this.projectKey,
-            // Remove this later in production (ONLY FOR TESTING)
-            Cookie: cookies,
           },
           withCredentials: true,
         }
@@ -210,8 +201,6 @@ export class AuthService {
           headers: {
             "project-id": this.projectId,
             "project-key": this.projectKey,
-            // Remove these later in production (ONLY FOR TESTING)
-            Cookie: cookies,
           },
           withCredentials: true,
         }
@@ -230,8 +219,6 @@ export class AuthService {
           headers: {
             "project-id": this.projectId,
             "project-key": this.projectKey,
-            // Remove this later in production (ONLY FOR TESTING)
-            Cookie: cookies,
           },
           withCredentials: true,
         }
@@ -248,8 +235,6 @@ export class AuthService {
         headers: {
           "project-id": this.projectId,
           "project-key": this.projectKey,
-          // Remove this later in production (ONLY FOR TESTING)
-          Cookie: cookies,
         },
         withCredentials: true,
       });
@@ -267,8 +252,6 @@ export class AuthService {
           headers: {
             "project-id": this.projectId,
             "project-key": this.projectKey,
-            // Remove this later in production (ONLY FOR TESTING)
-            Cookie: cookies,
           },
           withCredentials: true,
         }
@@ -289,8 +272,6 @@ export class AuthService {
             headers: {
               "project-id": this.projectId,
               "project-key": this.projectKey,
-              // Remove this later in production (ONLY FOR TESTING)
-              Cookie: cookies,
             },
             withCredentials: true,
           }
@@ -309,8 +290,6 @@ export class AuthService {
             headers: {
               "project-id": this.projectId,
               "project-key": this.projectKey,
-              // Remove this later in production (ONLY FOR TESTING)
-              Cookie: cookies,
             },
             withCredentials: true,
           }
@@ -332,8 +311,6 @@ export class AuthService {
             headers: {
               "project-id": this.projectId,
               "project-key": this.projectKey,
-              // Remove this later in production (ONLY FOR TESTING)
-              Cookie: cookies,
             },
             withCredentials: true,
           }
@@ -352,8 +329,6 @@ export class AuthService {
             headers: {
               "project-id": this.projectId,
               "project-key": this.projectKey,
-              // Remove this later in production (ONLY FOR TESTING)
-              Cookie: cookies,
             },
             withCredentials: true,
           }
@@ -385,8 +360,6 @@ export class AuthService {
           headers: {
             "project-id": this.projectId,
             "project-key": this.projectKey,
-            // Remove these later in production (ONLY FOR TESTING)
-            Cookie: cookies,
           },
           withCredentials: true,
         }
@@ -417,8 +390,6 @@ export class AuthService {
           headers: {
             "project-id": this.projectId,
             "project-key": this.projectKey,
-            // Remove these later in production (ONLY FOR TESTING)
-            Cookie: cookies,
           },
           withCredentials: true,
         }
