@@ -54,6 +54,28 @@ export class AuthService {
     }
   };
 
+  public updateAccount = async (username: string, email: string) => {
+    try {
+      const response = await axios.put(
+        `${this.baseUrl}/user/update`,
+        {
+          username,
+          email,
+        },
+        {
+          headers: {
+            "project-id": this.projectId,
+            "project-key": this.projectKey,
+          },
+          withCredentials: true,
+        }
+      );
+      return response.data;
+    } catch (error: any) {
+      throw error;
+    }
+  };
+
   public getCurrentUser = async () => {
     try {
       const response = await axios.get(`${this.baseUrl}/user/`, {
@@ -340,9 +362,10 @@ export class AuthService {
     },
   };
 
-  /* -----------------------------SECURITY LOG METHODS---------------------------------------- */
+  // FEATURES TO BE ADDED IN FUTURE
+  /* ----------------------------- SECURITY LOG METHODS ---------------------------------------- */
 
-  public getAllUserLogs = async ({
+  private getAllUserLogs = async ({
     page,
     itemLimit,
     startDate,
@@ -370,7 +393,7 @@ export class AuthService {
     }
   };
 
-  public getUserLogsByEventCode = async ({
+  private getUserLogsByEventCode = async ({
     page,
     itemLimit,
     startDate,
