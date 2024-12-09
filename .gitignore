@@ -24,3 +24,5 @@ Thumbs.db
 
 # Ignore tests
 ./src/tests/
+
+rough.md
